@@ -2,9 +2,11 @@ import csv
 import time
 from requests import post
 
+
 #DEFINE USER CONSTANTS
 update_core_string = "/api/services/update/install"
 data = {"entity_id": "update.home_assistant_core_update"}
+i = 0 
 
 #OPEN CSV FILE AND SKIP HEADER
 with open("server_db.csv", 'r') as file:
@@ -13,6 +15,7 @@ with open("server_db.csv", 'r') as file:
 
 #ITERATE OVER THE CSV LIST (# of iterations = # of rows)
   for row in csvreader:
+    i = i+1
     # print(row)
     # print(row[1])
     url = row[2] + update_core_string
@@ -23,7 +26,7 @@ with open("server_db.csv", 'r') as file:
     print(data)
     print("----------------------------------------")
     response = post(url, headers=headers, json=data)
-    print("----------------------------------------")
+    print("Updating row {}".format(i)+"...")
     print(response.text)
     time.sleep(8)
     
