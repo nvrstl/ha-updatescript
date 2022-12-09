@@ -1,4 +1,4 @@
 Klant,Bearer,URL
-Alex,www.homate1.be,abc
-Bert,www.homate2.be,def   
-Carl,www.hoamte3.be,ghi
+Alex,abc,www.homate1.be
+Bert,def,www.homate2.be
+Carl,ghi,www.homate3.be
