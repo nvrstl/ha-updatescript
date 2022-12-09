@@ -30,7 +30,7 @@ with open("server_db.csv", 'r') as file:
         response = post(url, headers=headers, json=data)
         response.raise_for_status()
         time.sleep(1)
-        print("INF: Updating server: {}".format(url)+"...")
+        print("INF: Updating server: {}".format(url)+" ...")
         time.sleep(2)
         print("INF: Server {}".format(url)+"has been sucessfully updated!")
         time.sleep(4)
