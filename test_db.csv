@@ -1,4 +1,4 @@
-"Klant,     ""Bearer"", ""URL"""
-"Alex,       ""M"",   42"
-"Bert,       ""M"",   42    "
-"Carl,       ""M"",   32"
+Klant,Bearer,URL
+Alex,www.homate1.be,abc
+Bert,www.homate2.be,def   
+Carl,www.hoamte3.be,ghi
