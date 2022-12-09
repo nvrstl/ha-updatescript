@@ -5,7 +5,7 @@ import requests
 
 
 #DEFINE USER CONSTANTS
-update_core_string = "/api/services/update/install"
+update_core_string = "api/services/update/install"
 data = {"entity_id": "update.home_assistant_core_update"}
 i = 0 
 
@@ -17,12 +17,11 @@ with open("server_db.csv", 'r') as file:
 
 #ITERATE OVER THE CSV LIST (# of iterations = # of rows)
   for row in csvreader:
-    i = i+1
-    # print(row)
+    # print(row)    
     # print(row[1])
     url = row[2] + update_core_string
     bearer_token = row[1]
-    headers = {"Authorization": "{}".format(bearer_token)}
+    headers = {"Authorization": "Bearer {}".format(bearer_token)}
     # print(headers)
     # print(url)
     # print(data) 
@@ -30,12 +29,18 @@ with open("server_db.csv", 'r') as file:
     try:
         response = post(url, headers=headers, json=data)
         response.raise_for_status()
-        print("Updating server: {}".format(url)+"...")
+        time.sleep(1)
+        print("INF: Updating server: {}".format(url)+"...")
         time.sleep(2)
-        print("Server {}".format(url)+"has been sucessfully updated!")
+        print("INF: Server {}".format(url)+"has been sucessfully updated!")
         time.sleep(4)
+        print(response.status_code)
     except requests.exceptions.HTTPError as err:
-        print("ERR: Server {} has already been updated".format(url))
+        print("WAR: Server {} has already been updated".format(url))
         time.sleep(4)
+    except requests.exceptions.InvalidSchema as errTimeout:
+        print("ERR: Can't reach Server {}".format(url))
+        time.sleep(4)
+
     # print(hassio_url)
     # print(bearer_token)
