@@ -6,7 +6,7 @@ import requests
 
 #DEFINE USER CONSTANTS
 update_core_string = "api/services/update/install"
-data = {"entity_id": "update.home_assistant_core_update"}
+data = {"entity_id": "update.home_assistant_operating_system_update"}
 i = 0 
 
 print ("Script has been started!")
@@ -30,13 +30,13 @@ with open("server_db.csv", 'r') as file:
         response = post(url, headers=headers, json=data)
         response.raise_for_status()
         time.sleep(1)
-        print("INF: Updating server: {}".format(url)+" ...")
+        print("INF: Updating OPERATING SYSTEM: {}".format(url)+" ...")
         time.sleep(2)
-        print("INF: Server {}".format(url)+"has been sucessfully updated!")
+        print("INF: OPERATING SYSTEM {}".format(url)+"has been sucessfully updated!")
         time.sleep(4)
         print(response.status_code)
     except requests.exceptions.HTTPError as err:
-        print("WAR: Server {} has already been updated".format(url))
+        print("WAR: OPERATING SYSTEM {} has already been updated".format(url))
         time.sleep(4)
     except requests.exceptions.InvalidSchema as errTimeout:
         print("ERR: Can't reach Server {}".format(url))
