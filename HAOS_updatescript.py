@@ -30,13 +30,13 @@ with open("server_db.csv", 'r') as file:
         response = post(url, headers=headers, json=data)
         response.raise_for_status()
         time.sleep(1)
-        print("INF: Updating CORE: {}".format(url)+" ...")
+        print("INF: Updating server: {}".format(url)+" ...")
         time.sleep(2)
-        print("INF: CORE {}".format(url)+" has been sucessfully updated!")
+        print("INF: Server {}".format(url)+"has been sucessfully updated!")
         time.sleep(4)
         print(response.status_code)
     except requests.exceptions.HTTPError as err:
-        print("WAR: CORE {} has already been updated".format(url))
+        print("WAR: Server {} has already been updated".format(url))
         time.sleep(4)
     except requests.exceptions.InvalidSchema as errTimeout:
         print("ERR: Can't reach Server {}".format(url))

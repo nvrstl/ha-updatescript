@@ -29,13 +29,13 @@ with open("server_db.csv", 'r') as file:
         response = post(url, headers=headers, json=data)
         response.raise_for_status()
         time.sleep(1)
-        print("INF: Updating Cloudflare on server: {}".format(url)+" ...")
+        print("INF: Updating CLOUDFLARE on server: {}".format(url)+" ...")
         time.sleep(2)
-        print("INF: Cloudflare on {}".format(url)+"has been sucessfully updated!")
+        print("INF: CLOUDFLARE on {}".format(url)+"has been sucessfully updated!")
         time.sleep(4)
         print(response.status_code)
     except requests.exceptions.HTTPError as err:
-        print("WAR: Cloudflare on server {} has already been updated".format(url))
+        print("WAR: CLOUDFLARE on server {} has already been updated".format(url))
         time.sleep(4)
     except requests.exceptions.InvalidSchema as errTimeout:
         print("ERR: Can't reach Server {}".format(url))
